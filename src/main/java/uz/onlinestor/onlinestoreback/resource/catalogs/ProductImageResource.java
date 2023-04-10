@@ -1,6 +1,6 @@
 package uz.onlinestor.onlinestoreback.resource.catalogs;
 
-import jakarta.servlet.http.HttpServletRequest;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +15,7 @@ import uz.onlinestor.onlinestoreback.models.catalogs.ProductImage;
 import uz.onlinestor.onlinestoreback.service.catalogs.ProductImageService;
 import uz.onlinestor.onlinestoreback.service.catalogs.ProductService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;

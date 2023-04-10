@@ -3,8 +3,8 @@ package uz.onlinestor.onlinestoreback.resource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import uz.onlinestore.onlinestore.models.Organization;
-import uz.onlinestore.onlinestore.service.OrganizationService;
+import uz.onlinestor.onlinestoreback.models.Organization;
+import uz.onlinestor.onlinestoreback.service.OrganizationService;
 
 @RestController
 @RequestMapping("/online/organization/")
