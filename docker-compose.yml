@@ -1,0 +1,55 @@
+version: "3.1"
+
+services:
+  app:
+    container_name: online_jar
+    image: online
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - postgressqldb
+    ports:
+      - 5558:5558
+#    command: java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -jar onlinestore-0.0.1-SNAPSHOT.jar
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgressqldb:5432/onlinestore
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 123
+      SPRING_DATASOURCE_DB: onlinestore
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    networks:
+      - onlinestoreback
+    volumes:
+      - uploads:/var/lib/uploads
+  postgressqldb:
+    container_name: postgres
+    image: postgres:14-alpine
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_DB: onlinestore
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+    networks:
+      - onlinestoreback
+    volumes:
+      - postgres_db:/var/lib/postgresql/data
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - onlinestoreback
+    ports:
+      - 8085:8080
+
+volumes:
+  postgres_db:
+  uploads:
+    external: true
+
+networks:
+  onlinestoreback:
+    driver: bridge
