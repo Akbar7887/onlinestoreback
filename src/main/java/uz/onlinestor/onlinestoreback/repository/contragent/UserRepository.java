@@ -14,6 +14,10 @@ public interface UserRepository extends JpaRepository<UserApp, Long> {
     @Query("select u from UserApp u where u.active = :active")
     List<UserApp> getAll(@Param("active") ACTIVE active);
 
-    UserApp findByPhone(String phone);
+    UserApp findByUsername(String username);
+
+    Boolean existsByUsername(String username);
+
+    Boolean existsByPhone(String phone);
 
 }
