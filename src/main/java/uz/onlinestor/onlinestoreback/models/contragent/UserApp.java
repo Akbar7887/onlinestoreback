@@ -6,7 +6,7 @@ import uz.onlinestor.onlinestoreback.models.ACTIVE;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.*;
 
 @Entity
 @Table(name = "userapp")
@@ -28,23 +28,22 @@ public class UserApp implements Serializable {
     @Enumerated(value = EnumType.STRING)
     private ACTIVE active = ACTIVE.ACTIVE;
 
-    @Enumerated(value = EnumType.STRING)
-    private ROLE role;
-
-
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {CascadeType.PERSIST})
+    private Collection<Role> roles = new ArrayList<>();
 
 
     public UserApp() {
     }
 
-    public UserApp(Long id, String username, String password, String phone, Date dateCreate, ACTIVE active, ROLE role) {
+    public UserApp(Long id, String username, String password, String phone, Date dateCreate, ACTIVE active, Collection<Role> roles) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.phone = phone;
         this.dateCreate = dateCreate;
         this.active = active;
-        this.role = role;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -95,12 +94,12 @@ public class UserApp implements Serializable {
         this.active = active;
     }
 
-    public ROLE getRole() {
-        return role;
+    public Collection<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(ROLE role) {
-        this.role = role;
+    public void setRoles(Collection<Role> roles) {
+        this.roles = roles;
     }
 }
 
