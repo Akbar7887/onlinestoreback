@@ -31,7 +31,7 @@ public class Product  {
     private String codeproduct;
 
     @Enumerated(value = EnumType.STRING)
-    private Status active = Status.ACTIVE;
+    private Status status = Status.ACTIVE;
 
 
     @ManyToOne()
@@ -48,19 +48,19 @@ public class Product  {
 
     @OneToMany(mappedBy = "product",
             targetEntity = Price.class,
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+            cascade = CascadeType.ALL
+            )
     @JsonManagedReference
     private List<Price> prices = new ArrayList<>();
 
     @OneToMany(mappedBy = "product",
-            fetch = FetchType.EAGER,
+//            fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
 //    @JsonManagedReference
     private List<MarkUser> markUsers = new ArrayList<>();
 
     @OneToMany(mappedBy = "product",
-            fetch = FetchType.EAGER,
+//            fetch = FetchType.EAGER,
             cascade = CascadeType.ALL)
 //    @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
@@ -74,7 +74,7 @@ public class Product  {
         this.name = name;
         this.description = description;
 
-        this.active = active;
+        this.status = active;
         this.catalog = catalog;
         this.productImages = productImages;
         this.prices = prices;
@@ -121,11 +121,11 @@ public class Product  {
     }
 
     public Status getActive() {
-        return active;
+        return status;
     }
 
     public void setActive(Status active) {
-        this.active = active;
+        this.status = active;
     }
 
     public Catalog getCatalog() {

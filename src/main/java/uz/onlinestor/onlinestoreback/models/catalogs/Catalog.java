@@ -26,7 +26,7 @@ public class Catalog {
 
 
     @Enumerated(value = EnumType.STRING)
-    private Status active = Status.ACTIVE;
+    private Status status = Status.ACTIVE;
 
     @OneToMany(mappedBy = "parent",
             fetch = FetchType.LAZY,
@@ -43,11 +43,11 @@ public class Catalog {
     public Catalog() {
     }
 
-    public Catalog(Long id, @NonNull String catalogname, String imagepath, Status active, List<Catalog> catalogs, Catalog parent) {
+    public Catalog(Long id, @NonNull String catalogname, String imagepath, Status status, List<Catalog> catalogs, Catalog parent) {
         this.id = id;
         this.catalogname = catalogname;
         this.imagepath = imagepath;
-        this.active = active;
+        this.status = status;
         this.catalogs = catalogs;
         this.parent = parent;
     }
@@ -91,11 +91,11 @@ public class Catalog {
     }
 
     public Status getActive() {
-        return active;
+        return status;
     }
 
     public void setActive(Status active) {
-        this.active = active;
+        this.status = active;
     }
 
     public List<Catalog> getCatalogs() {

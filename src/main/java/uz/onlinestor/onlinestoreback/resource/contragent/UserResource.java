@@ -9,7 +9,7 @@ import uz.onlinestor.onlinestoreback.service.contragent.UserServiceIml;
 import java.util.List;
 
 @RestController
-@RequestMapping("/online/doc/user/")
+@RequestMapping("/login/")
 @RequiredArgsConstructor
 public class UserResource {
 

@@ -12,7 +12,7 @@ import java.util.*;
         @UniqueConstraint(columnNames = "phone"),
         @UniqueConstraint(columnNames = "username")
 })
-public class UserApp extends BaseEntity{
+public class UserApp{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -27,9 +27,6 @@ public class UserApp extends BaseEntity{
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @CreationTimestamp
     private Date dateCreate;
-
-    @Enumerated(value = EnumType.STRING)
-    private Status active = Status.ACTIVE;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
@@ -49,7 +46,6 @@ public class UserApp extends BaseEntity{
         this.phone = phone;
         this.email = email;
         this.dateCreate = dateCreate;
-        this.active = active;
         this.roles = roles;
         this.status = status;
     }
@@ -92,14 +88,6 @@ public class UserApp extends BaseEntity{
 
     public void setDateCreate(Date dateCreate) {
         this.dateCreate = dateCreate;
-    }
-
-    public Status getActive() {
-        return active;
-    }
-
-    public void setActive(Status active) {
-        this.active = active;
     }
 
     public String getEmail() {

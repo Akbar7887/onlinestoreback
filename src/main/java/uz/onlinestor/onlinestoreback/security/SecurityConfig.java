@@ -39,66 +39,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(
                 "/api/token/refresh/**",
-                "/login", "/login/**",
-                "/meneger/get", "/meneger/download/meneger/*",
-                "/catalog/get",
-                "/imagecatalog/download/catalogs/*",
-                "/imagecatalog/get", "/imagecatalog/save",
-                "/kompleks/get", "/kompleks/download/**",
-                "/make/get", "/make/download/makes/*",
-                "/news/get", "/news/download/news/*",
-                "/news/download/imagenews/*",
-                "/news/**",
-                "/job/get",
-                "/dom/get",
-                "/orderb/**",
-                "/ligthuser/get",
-                "/imagedata/get", "/imagedata/download/images/*"
+                "/login", "/login/**"
+
         ).permitAll();
         http.authorizeRequests().antMatchers(GET, "/api/users/**", "/login/**",
-                "/meneger/**",
-                "/catalog/**",
-                "/imagecatalog/download/catalogs/*",
-                "/imagecatalog/**",
-                "/imagedata/**",
-                "/kompleks/**",
-                "/make/**",
-                "/news/**",
-                "/job/**",
-                "/dom/**",
-                "/orderb/**",
-                "/ligthuser/**",
-                "/imagedata/**").hasAnyAuthority("ADMIN");
+                "/meneger/**").hasAnyAuthority("ADMIN");
         http.authorizeRequests().antMatchers(POST, "/api/user/save/**", "/api/token/refresh/**",
-                "/login/**",
-                "/meneger/**",
-                "/catalog/**",
-                "/imagecatalog/download/catalogs/*",
-                "/imagecatalog/**",
-                "/imagedata/**",
-                "/kompleks/**",
-                "/make/**",
-                "/news/**",
-                "/job/**",
-                "/dom/**",
-                "/orderb/**",
-                "/ligthuser/**",
-                "/imagedata/**").hasAnyAuthority("ADMIN");
+                "/login/**").hasAnyAuthority("ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/api/user/save/**", "/api/token/refresh/**",
-                "/login/**",
-                "/meneger/**",
-                "/catalog/**",
-                "/imagecatalog/download/catalogs/*",
-                "/imagecatalog/**",
-                "/imagedata/**",
-                "/kompleks/**",
-                "/make/**",
-                "/news/**",
-                "/job/**",
-                "/dom/**",
-                "/orderb/**",
-                "/ligthuser/**",
-                "/imagedata/**").hasAnyAuthority("ADMIN");
+                "/login/**").hasAnyAuthority("ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
