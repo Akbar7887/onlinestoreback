@@ -16,8 +16,4 @@ public interface UserRepository extends JpaRepository<UserApp, Long> {
 
     UserApp findByUsername(String username);
 
-    Boolean existsByUsername(String username);
-
-    Boolean existsByPhone(String phone);
-
 }
