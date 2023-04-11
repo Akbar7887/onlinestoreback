@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserRepository extends JpaRepository<UserApp, Long> {
 
 
-    @Query("select u from UserApp u where u.active = :active")
+    @Query("select u from UserApp u where u.status = :active")
     List<UserApp> getAll(@Param("active") Status active);
 
     UserApp findByUsername(String username);

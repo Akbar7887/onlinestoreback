@@ -12,9 +12,9 @@ import java.util.List;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("select c from Product c where c.active = :active and c.catalog.id = :catalog_id")
+    @Query("select c from Product c where c.status = :active and c.catalog.id = :catalog_id")
     List<Product> getAllActiveById(@Param("active") Status active, @Param("catalog_id") Long id);
 
-    @Query("select c from Product c where c.active = :active")
+    @Query("select c from Product c where c.status = :active")
     List<Product> getAllActive(@Param("active") Status active);
 }

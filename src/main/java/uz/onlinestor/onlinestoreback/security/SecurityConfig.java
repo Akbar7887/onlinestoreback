@@ -39,15 +39,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(
                 "/api/token/refresh/**",
-                "/login", "/login/**"
+                "/login", "/login/**",
+                "/online/doc/catalog/get",
+                "/online/doc/product/get",
+                "/online/doc/characteristic/get",
+                "/online/doc/productImage/get",
+                "/online/doc/exchangeRates/get",
+                "/online/doc/rates/get",
+                "/online/doc/comment/get"
+
 
         ).permitAll();
-        http.authorizeRequests().antMatchers(GET, "/api/users/**", "/login/**",
-                "/meneger/**").hasAnyAuthority("ADMIN");
-        http.authorizeRequests().antMatchers(POST, "/api/user/save/**", "/api/token/refresh/**",
-                "/login/**").hasAnyAuthority("ADMIN");
-        http.authorizeRequests().antMatchers(PUT, "/api/user/save/**", "/api/token/refresh/**",
-                "/login/**").hasAnyAuthority("ADMIN");
+//        http.authorizeRequests().antMatchers(GET, "/api/users/**", "/login/**",
+//                "/meneger/**").hasAnyAuthority("ADMIN");
+//        http.authorizeRequests().antMatchers(POST, "/api/user/save/**", "/api/token/refresh/**",
+//                "/login/**").hasAnyAuthority("ADMIN");
+//        http.authorizeRequests().antMatchers(PUT, "/api/user/save/**", "/api/token/refresh/**",
+//                "/login/**").hasAnyAuthority("ADMIN");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
