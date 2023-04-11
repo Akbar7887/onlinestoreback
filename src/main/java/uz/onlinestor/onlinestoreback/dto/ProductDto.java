@@ -4,7 +4,7 @@ package uz.onlinestor.onlinestoreback.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import uz.onlinestor.onlinestoreback.models.ACTIVE;
+import uz.onlinestor.onlinestoreback.models.Status;
 import uz.onlinestor.onlinestoreback.models.calculate.Price;
 import uz.onlinestor.onlinestoreback.models.catalogs.Catalog;
 import uz.onlinestor.onlinestoreback.models.catalogs.Characteristic;
@@ -21,7 +21,7 @@ public class ProductDto {
     private Long id;
     private String name;
     private String description;
-    private ACTIVE active = ACTIVE.ACTIVE;
+    private Status active = Status.ACTIVE;
     private Catalog catalog;
     private String codeproduct;
     private List<ProductImage> productImages;

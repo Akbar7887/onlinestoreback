@@ -1,7 +1,8 @@
 package uz.onlinestor.onlinestoreback.models;
 
-public enum ACTIVE {
+public enum Status {
 
     ACTIVE,
-    NOACTIVE
+    NOACTIVE,
+    DELETED
 }

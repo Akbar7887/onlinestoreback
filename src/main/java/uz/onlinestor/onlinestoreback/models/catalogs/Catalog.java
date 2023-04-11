@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.NonNull;
-import uz.onlinestor.onlinestoreback.models.ACTIVE;
+import uz.onlinestor.onlinestoreback.models.Status;
 
 import javax.persistence.*;
 import java.util.List;
@@ -26,7 +26,7 @@ public class Catalog {
 
 
     @Enumerated(value = EnumType.STRING)
-    private ACTIVE active = ACTIVE.ACTIVE;
+    private Status active = Status.ACTIVE;
 
     @OneToMany(mappedBy = "parent",
             fetch = FetchType.LAZY,
@@ -43,7 +43,7 @@ public class Catalog {
     public Catalog() {
     }
 
-    public Catalog(Long id, @NonNull String catalogname, String imagepath, ACTIVE active, List<Catalog> catalogs, Catalog parent) {
+    public Catalog(Long id, @NonNull String catalogname, String imagepath, Status active, List<Catalog> catalogs, Catalog parent) {
         this.id = id;
         this.catalogname = catalogname;
         this.imagepath = imagepath;
@@ -90,17 +90,17 @@ public class Catalog {
         this.imagepath = imagepath;
     }
 
-    public ACTIVE getActive() {
+    public Status getActive() {
         return active;
     }
 
-    public void setActive(ACTIVE active) {
+    public void setActive(Status active) {
         this.active = active;
     }
 
     public List<Catalog> getCatalogs() {
         if(catalogs != null){
-            return catalogs.stream().filter(catalog -> catalog.getActive() == ACTIVE.ACTIVE).collect(Collectors.toList());
+            return catalogs.stream().filter(catalog -> catalog.getActive() == Status.ACTIVE).collect(Collectors.toList());
         }
         return  catalogs;
     }

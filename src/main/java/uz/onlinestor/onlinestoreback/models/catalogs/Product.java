@@ -2,7 +2,7 @@ package uz.onlinestor.onlinestoreback.models.catalogs;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.NonNull;
-import uz.onlinestor.onlinestoreback.models.ACTIVE;
+import uz.onlinestor.onlinestoreback.models.Status;
 import uz.onlinestor.onlinestoreback.models.calculate.Price;
 import uz.onlinestor.onlinestoreback.models.contragent.Comment;
 import uz.onlinestor.onlinestoreback.models.contragent.MarkUser;
@@ -31,7 +31,7 @@ public class Product  {
     private String codeproduct;
 
     @Enumerated(value = EnumType.STRING)
-    private ACTIVE active = ACTIVE.ACTIVE;
+    private Status active = Status.ACTIVE;
 
 
     @ManyToOne()
@@ -68,7 +68,7 @@ public class Product  {
     public Product() {
     }
 
-    public Product(Long id, String codeproduct, @NonNull String name, String description,  ACTIVE active, Catalog catalog, List<ProductImage> productImages, List<Price> prices, List<MarkUser> markUsers, List<Comment> comments) {
+    public Product(Long id, String codeproduct, @NonNull String name, String description, Status active, Catalog catalog, List<ProductImage> productImages, List<Price> prices, List<MarkUser> markUsers, List<Comment> comments) {
         this.id = id;
         this.codeproduct = codeproduct;
         this.name = name;
@@ -120,11 +120,11 @@ public class Product  {
         this.description = description;
     }
 
-    public ACTIVE getActive() {
+    public Status getActive() {
         return active;
     }
 
-    public void setActive(ACTIVE active) {
+    public void setActive(Status active) {
         this.active = active;
     }
 

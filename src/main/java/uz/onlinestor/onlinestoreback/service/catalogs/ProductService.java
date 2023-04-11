@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import uz.onlinestor.onlinestoreback.dto.ProductDto;
-import uz.onlinestor.onlinestoreback.models.ACTIVE;
+import uz.onlinestor.onlinestoreback.models.Status;
 import uz.onlinestor.onlinestoreback.models.catalogs.Product;
 import uz.onlinestor.onlinestoreback.models.contragent.MarkUser;
 import uz.onlinestor.onlinestoreback.models.contragent.UserApp;
@@ -36,13 +36,13 @@ public class ProductService {
     public List<ProductDto> getAllProductDto(Long catalog_id) {
         if (catalog_id == -1) {
             return productRepository
-                    .getAllActive(ACTIVE.ACTIVE)
+                    .getAllActive(Status.ACTIVE)
                     .stream()
                     .map(this::convertToProductDto)
                     .collect(Collectors.toList());
         } else {
             return productRepository
-                    .getAllActiveById(ACTIVE.ACTIVE, catalog_id)
+                    .getAllActiveById(Status.ACTIVE, catalog_id)
                     .stream()
                     .map(this::convertToProductDto)
                     .collect(Collectors.toList());
@@ -74,16 +74,16 @@ public class ProductService {
     }
 
     public List<Product> getAllActive(Long catalog_id) {
-        return productRepository.getAllActiveById(ACTIVE.ACTIVE, catalog_id);
+        return productRepository.getAllActiveById(Status.ACTIVE, catalog_id);
     }
 
     public List<Product> getAllActive() {
-        return productRepository.getAllActive(ACTIVE.ACTIVE);
+        return productRepository.getAllActive(Status.ACTIVE);
     }
 
     public Product delete(Long id) {
         Product product = productRepository.findById(id).orElse(null);
-        product.setActive(ACTIVE.NOACTIVE);
+        product.setActive(Status.NOACTIVE);
         return productRepository.save(product);
     }
 

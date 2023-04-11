@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import uz.onlinestor.onlinestoreback.dto.CatalogDto;
 import uz.onlinestor.onlinestoreback.fileupload.FileService;
-import uz.onlinestor.onlinestoreback.models.ACTIVE;
+import uz.onlinestor.onlinestoreback.models.Status;
 import uz.onlinestor.onlinestoreback.models.catalogs.Catalog;
 import uz.onlinestor.onlinestoreback.repository.catalogs.CatalogRepository;
 import uz.onlinestor.onlinestoreback.repository.catalogs.ProductRepository;
@@ -41,7 +41,7 @@ public class CatalogService {
 
     public List<CatalogDto> getAllCatalogDto() {
         return catalogRepository.
-                getAllActive(ACTIVE.ACTIVE).
+                getAllActive(Status.ACTIVE).
                 stream().
                 map(this::convertToCatalogDto).
                 collect(Collectors.toList());
@@ -52,7 +52,7 @@ public class CatalogService {
     }
 
     public List<Catalog> getAllActiveAllOfThem() {
-        return catalogRepository.getAllActiveAllOfThem(ACTIVE.ACTIVE);
+        return catalogRepository.getAllActiveAllOfThem(Status.ACTIVE);
     }
 
     public CatalogDto save(Catalog catalog) {
@@ -64,7 +64,7 @@ public class CatalogService {
         Catalog oldcatalog1;
         if (oldCatalog.isPresent()) {
             oldcatalog1 = oldCatalog.orElse(null);
-            catalog.setActive(ACTIVE.ACTIVE);
+            catalog.setActive(Status.ACTIVE);
             oldcatalog1.addCatalog(catalog);
 
             return catalogRepository.save(oldcatalog1);
@@ -76,7 +76,7 @@ public class CatalogService {
         Optional<Catalog> catalogOptional = catalogRepository.findById(id);
         if (catalogOptional.isPresent()) {
             Catalog catalog = catalogOptional.get();
-            catalog.setActive(ACTIVE.NOACTIVE);
+            catalog.setActive(Status.NOACTIVE);
             return catalogRepository.save(catalog);
         } else {
             return null;

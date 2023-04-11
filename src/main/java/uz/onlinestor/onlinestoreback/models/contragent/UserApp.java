@@ -2,7 +2,7 @@ package uz.onlinestor.onlinestoreback.models.contragent;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
-import uz.onlinestor.onlinestoreback.models.ACTIVE;
+import uz.onlinestor.onlinestoreback.models.Status;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,7 +14,7 @@ import java.util.Set;
         @UniqueConstraint(columnNames = "phone"),
         @UniqueConstraint(columnNames = "username")
 })
-public class UserApp {
+public class UserApp extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -31,18 +31,20 @@ public class UserApp {
     private Date dateCreate;
 
     @Enumerated(value = EnumType.STRING)
-    private ACTIVE active = ACTIVE.ACTIVE;
+    private Status active = Status.ACTIVE;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
 
     public UserApp() {
     }
 
-    public UserApp(Long id, String username, String password, String phone, String email, Date dateCreate, ACTIVE active, Set<Role> roles) {
+    public UserApp(Long id, String username, String password, String phone, String email, Date dateCreate, Status active, Set<Role> roles, Status status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -51,6 +53,7 @@ public class UserApp {
         this.dateCreate = dateCreate;
         this.active = active;
         this.roles = roles;
+        this.status = status;
     }
 
     public Long getId() {
@@ -93,11 +96,11 @@ public class UserApp {
         this.dateCreate = dateCreate;
     }
 
-    public ACTIVE getActive() {
+    public Status getActive() {
         return active;
     }
 
-    public void setActive(ACTIVE active) {
+    public void setActive(Status active) {
         this.active = active;
     }
 
@@ -117,6 +120,12 @@ public class UserApp {
         this.email = email;
     }
 
+    public Status getStatus() {
+        return status;
+    }
 
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }
 
