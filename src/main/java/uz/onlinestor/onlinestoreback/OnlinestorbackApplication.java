@@ -19,10 +19,4 @@ public class OnlinestorbackApplication {
 
 		SpringApplication.run(OnlinestorbackApplication.class, args);
 	}
-
-	@Bean
-	PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-
 }
