@@ -3,10 +3,12 @@ package uz.onlinestor.onlinestoreback.repository.orders;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import uz.onlinestor.onlinestoreback.models.orders.OrderUser;
 
 import java.util.List;
 
+@Repository
 public interface OrderUserRepository extends JpaRepository<OrderUser, Long> {
 
     @Query("select o from OrderUser o where o.userApp.id = :id and o.sold = false")

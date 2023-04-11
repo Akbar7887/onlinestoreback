@@ -9,7 +9,7 @@ import uz.onlinestor.onlinestoreback.models.catalogs.Product;
 
 import java.util.List;
 
-
+@Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query("select c from Product c where c.active = :active and c.catalog.id = :catalog_id")

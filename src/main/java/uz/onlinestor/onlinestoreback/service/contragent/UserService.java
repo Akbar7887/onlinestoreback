@@ -1,19 +1,25 @@
 package uz.onlinestor.onlinestoreback.service.contragent;
 
-
+import uz.onlinestor.onlinestoreback.models.contragent.ERole;
+import uz.onlinestor.onlinestoreback.models.contragent.Role;
 import uz.onlinestor.onlinestoreback.models.contragent.UserApp;
 
 import java.util.List;
 
 public interface UserService {
 
-    UserApp register(UserApp user);
+    UserApp saveUser(UserApp user);
 
-    List<UserApp> getAll();
+    Role saveRole(Role role);
 
-    UserApp findByUsername(String username);
+    void addRoleToUser(String username, ERole rolename);
 
-    UserApp findById(Long id);
+    UserApp getUser(String username);
 
-    void delete(Long id);
+    List<UserApp> getUser();
+
+
+    List<UserApp> findAll();
+
+    void deleteById(Long id);
 }

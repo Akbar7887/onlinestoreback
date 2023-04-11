@@ -1,55 +1,36 @@
-//package uz.onlinestor.onlinestoreback.resource.contragent;
-//
-//import com.auth0.jwt.JWT;
-//import com.auth0.jwt.JWTVerifier;
-//import com.auth0.jwt.algorithms.Algorithm;
-//import com.auth0.jwt.interfaces.DecodedJWT;
-//import com.fasterxml.jackson.core.JsonProcessingException;
-//import com.fasterxml.jackson.databind.ObjectMapper;
-//import lombok.RequiredArgsConstructor;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.configurationprocessor.json.JSONException;
-//import org.springframework.web.bind.annotation.*;
-//import uz.onlinestor.onlinestoreback.models.contragent.Role;
-//import uz.onlinestor.onlinestoreback.models.contragent.UserApp;
-//import uz.onlinestor.onlinestoreback.service.contragent.UserService;
-//
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import java.io.IOException;
-//import java.util.HashMap;
-//import java.util.List;
-//import java.util.Map;
-//import java.util.stream.Collectors;
-//
-//import static org.springframework.http.HttpHeaders.AUTHORIZATION;
-//import static org.springframework.http.HttpStatus.FORBIDDEN;
-//import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
-//
-//@RestController
-//@RequestMapping("/online/doc/user/")
-//@RequiredArgsConstructor
-//public class UserResource {
-//
-//    @Autowired
-//    final UserService userService;
-//
-//    @GetMapping("get")
-//    private List<UserApp> getAll() {
-//        return userService.getAll();
-//    }
-//
-//    @PostMapping("save")
-//    private UserApp save(@RequestBody UserApp user) {
-//        return userService.save(user);
-//    }
-//
-//    @PutMapping("delete")
-//    private UserApp delete(@RequestParam("id") String id) {
-//
-//        return userService.delete(Long.parseLong(id));
-//    }
-//
+package uz.onlinestor.onlinestoreback.resource.contragent;
+
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+import uz.onlinestor.onlinestoreback.models.contragent.UserApp;
+import uz.onlinestor.onlinestoreback.service.contragent.UserServiceIml;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/online/doc/user/")
+@RequiredArgsConstructor
+public class UserResource {
+
+    @Autowired
+    final UserServiceIml userService;
+
+    @GetMapping("get")
+    private List<UserApp> getAll() {
+        return userService.findAll();
+    }
+
+    @PostMapping("save")
+    private UserApp save(@RequestBody UserApp user) {
+        return userService.saveUser(user);
+    }
+
+    @PutMapping("delete")
+    private void delete(@RequestParam("id") String id) {
+        userService.deleteById(Long.parseLong(id));
+    }
+
 //    @PostMapping("sendsms")
 //    private void sendSms(@RequestParam("phone") String phone) throws JSONException, JsonProcessingException {
 //        userService.sendSms(phone);
@@ -95,5 +76,5 @@
 //            throw new RuntimeException("Refresh token is missing");
 //        }
 //    }
-//
-//}
+
+}
