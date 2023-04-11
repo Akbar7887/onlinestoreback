@@ -9,7 +9,7 @@ import uz.onlinestor.onlinestoreback.models.catalogs.Catalog;
 
 import java.util.List;
 
-@Repository
+
 public interface CatalogRepository extends JpaRepository<Catalog, Long> {
 
     @Query("select c from Catalog c where c.active = :active " +
