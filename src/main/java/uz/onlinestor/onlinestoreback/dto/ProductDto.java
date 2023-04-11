@@ -21,7 +21,7 @@ public class ProductDto {
     private Long id;
     private String name;
     private String description;
-    private Status active = Status.ACTIVE;
+    private Status status = Status.ACTIVE;
     private Catalog catalog;
     private String codeproduct;
     private List<ProductImage> productImages;

@@ -16,7 +16,7 @@ public class CatalogDto {
     private Long id;
     private String catalogname;
     private String imagepath;
-    private Status active;
+    private Status status;
     private List<Catalog> catalogs;
     private Catalog parent;
 

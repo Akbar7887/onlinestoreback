@@ -34,7 +34,7 @@ public class UserApp{
     private List<Role> roles = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)
-    private Status status;
+    private Status status = Status.ACTIVE;
 
     public UserApp() {
     }

@@ -83,7 +83,7 @@ public class ProductService {
 
     public Product delete(Long id) {
         Product product = productRepository.findById(id).orElse(null);
-        product.setActive(Status.NOACTIVE);
+        product.setStatus(Status.NOACTIVE);
         return productRepository.save(product);
     }
 

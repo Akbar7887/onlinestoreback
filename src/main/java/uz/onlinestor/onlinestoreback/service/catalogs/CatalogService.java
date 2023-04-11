@@ -32,7 +32,7 @@ public class CatalogService {
             catalogDto.setId(catalog.getId());
             catalogDto.setCatalogname(catalog.getCatalogname());
 //        catalogDto.setImagepath(catalog.getImagepath());
-            catalogDto.setActive(catalog.getActive());
+            catalogDto.setStatus(catalog.getStatus());
             catalogDto.setCatalogs(catalog.getCatalogs());
             catalogDto.setParent(catalog.getParent());
 
@@ -64,7 +64,7 @@ public class CatalogService {
         Catalog oldcatalog1;
         if (oldCatalog.isPresent()) {
             oldcatalog1 = oldCatalog.orElse(null);
-            catalog.setActive(Status.ACTIVE);
+            catalog.setStatus(Status.ACTIVE);
             oldcatalog1.addCatalog(catalog);
 
             return catalogRepository.save(oldcatalog1);
@@ -76,7 +76,7 @@ public class CatalogService {
         Optional<Catalog> catalogOptional = catalogRepository.findById(id);
         if (catalogOptional.isPresent()) {
             Catalog catalog = catalogOptional.get();
-            catalog.setActive(Status.NOACTIVE);
+            catalog.setStatus(Status.NOACTIVE);
             return catalogRepository.save(catalog);
         } else {
             return null;

@@ -90,17 +90,17 @@ public class Catalog {
         this.imagepath = imagepath;
     }
 
-    public Status getActive() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setActive(Status active) {
-        this.status = active;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public List<Catalog> getCatalogs() {
         if(catalogs != null){
-            return catalogs.stream().filter(catalog -> catalog.getActive() == Status.ACTIVE).collect(Collectors.toList());
+            return catalogs.stream().filter(catalog -> catalog.getStatus() == Status.ACTIVE).collect(Collectors.toList());
         }
         return  catalogs;
     }

@@ -120,12 +120,12 @@ public class Product  {
         this.description = description;
     }
 
-    public Status getActive() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setActive(Status active) {
-        this.status = active;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Catalog getCatalog() {
