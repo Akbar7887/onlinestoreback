@@ -11,6 +11,7 @@ import uz.onlinestor.onlinestoreback.models.contragent.UserApp;
 import uz.onlinestor.onlinestoreback.repository.contragent.RoleRepository;
 import uz.onlinestor.onlinestoreback.repository.contragent.UserRepository;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserApp register(UserApp user) {
         Role roleUser = roleRepository.findByName(ERole.ROLE_USER).orElse(null);
-        Set<Role> userRoles = new HashSet<>();
+        List<Role> userRoles = new ArrayList<>();
         userRoles.add(roleUser);
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));

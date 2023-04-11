@@ -5,9 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import uz.onlinestor.onlinestoreback.models.Status;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "userapp", uniqueConstraints = {
@@ -36,7 +34,7 @@ public class UserApp extends BaseEntity{
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
 
     @Enumerated(value = EnumType.STRING)
     private Status status;
@@ -44,7 +42,7 @@ public class UserApp extends BaseEntity{
     public UserApp() {
     }
 
-    public UserApp(Long id, String username, String password, String phone, String email, Date dateCreate, Status active, Set<Role> roles, Status status) {
+    public UserApp(Long id, String username, String password, String phone, String email, Date dateCreate, Status active, List<Role> roles, Status status) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -104,14 +102,6 @@ public class UserApp extends BaseEntity{
         this.active = active;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -126,6 +116,14 @@ public class UserApp extends BaseEntity{
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
 
