@@ -46,7 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/online/doc/productImage/get",
                 "/online/doc/exchangeRates/get",
                 "/online/doc/rates/get",
-                "/online/doc/comment/get"
+                "/online/doc/comment/get",
+                "/online/organization/get",
+                "/online/doc/user/get"
 
 
         ).permitAll();

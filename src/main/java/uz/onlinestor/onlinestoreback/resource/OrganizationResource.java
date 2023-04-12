@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import uz.onlinestor.onlinestoreback.models.Organization;
 import uz.onlinestor.onlinestoreback.service.OrganizationService;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/online/organization/")
 @RequiredArgsConstructor
@@ -14,8 +16,8 @@ public class OrganizationResource {
     private final OrganizationService organizationService;
 
     @GetMapping("get")
-    private Organization getAll() {
-        return organizationService.getFirst().orElse(null);
+    private List<Organization> getAll() {
+        return organizationService.getAll();
     }
 
     @PostMapping("save")
