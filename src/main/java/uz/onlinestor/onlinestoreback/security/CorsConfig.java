@@ -22,6 +22,7 @@ public class CorsConfig {
         config.addAllowedOrigin("https://cab.dsk.uz");
         //config.addAllowedOrigin("https://dsk-service.azurewebsites.net");
         config.addAllowedOrigin("http://localhost:49588");
+        config.addAllowedOrigin("http://localhost:49588/Home");
         config.addAllowedOrigin("https://test.dsk.uz");
         config.addAllowedOrigin("https://dsk.uz");
         config.addAllowedOrigin("https://www.dsk.uz");
