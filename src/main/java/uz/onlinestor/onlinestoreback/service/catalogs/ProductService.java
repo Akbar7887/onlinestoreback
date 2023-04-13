@@ -26,8 +26,8 @@ public class ProductService {
 
     @Autowired
     final ProductRepository productRepository;
-    @Autowired
-    final CharacteristicRepository characteristicRepository;
+//    @Autowired
+//    final CharacteristicRepository characteristicRepository;
     @Autowired
     final CatalogRepository catalogRepository;
     @Autowired

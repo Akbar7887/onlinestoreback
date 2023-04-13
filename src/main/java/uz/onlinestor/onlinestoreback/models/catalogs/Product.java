@@ -38,7 +38,8 @@ public class Product  {
     @JoinColumn(name = "catalog_id", referencedColumnName = "id")
     private Catalog catalog;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product",
+            cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<ProductImage> productImages = new ArrayList<>();
 
@@ -46,9 +47,9 @@ public class Product  {
 //    @JsonManagedReference
 //    private List<Characteristic> characteristics = new ArrayList<>();
 
-    @OneToMany(mappedBy = "product",
-            targetEntity = Price.class,
-            cascade = CascadeType.ALL
+    @OneToMany(mappedBy = "product"
+//            targetEntity = Price.class,
+//            cascade = CascadeType.ALL
             )
     @JsonManagedReference
     private List<Price> prices = new ArrayList<>();

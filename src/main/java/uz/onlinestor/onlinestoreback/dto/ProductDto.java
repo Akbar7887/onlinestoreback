@@ -25,7 +25,6 @@ public class ProductDto {
     private Catalog catalog;
     private String codeproduct;
     private List<ProductImage> productImages;
-    private List<Characteristic> characteristics;
     private List<Price> prices;
     private double markuser;
     private int marksize;
