@@ -18,12 +18,12 @@ public class ExchangeRatesResource {
     @Autowired
     final private ExchangeRatesService exchangeRatesService;
 
-    @GetMapping("get")
+    @GetMapping("v1/get")
     private List<ExchangeRates> getAll() {
         return exchangeRatesService.getAll();
     }
 
-    @GetMapping("getbydate")
+    @GetMapping("v1/getbydate")
     private ExchangeRates getbyDate(@RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date) {
         return exchangeRatesService.getbyDate(date);
     }

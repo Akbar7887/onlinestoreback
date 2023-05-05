@@ -15,7 +15,7 @@ public class OrganizationResource {
 
     private final OrganizationService organizationService;
 
-    @GetMapping("get")
+    @GetMapping("v1/get")
     private List<Organization> getAll() {
         return organizationService.getAll();
     }

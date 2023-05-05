@@ -34,7 +34,7 @@ public class ProductImageResource {
     private final ProductService productService;
     private final FileService fileService;
 
-    @GetMapping("get")
+    @GetMapping("v1/get")
     private List<ProductImage> getByParentId(@RequestParam("id") String id){
         return productImageService.getByParentId(Long.parseLong(id));
     }
@@ -76,7 +76,7 @@ public class ProductImageResource {
     }
 
 
-    @GetMapping("download/{id:.+}")
+    @GetMapping("v1/download/{id:.+}")
     private ResponseEntity<?> downloadFile(@PathVariable("id") String id, HttpServletRequest request) throws IOException {
 
         ProductImage productImage = productImageService.getById(Long.parseLong(id));

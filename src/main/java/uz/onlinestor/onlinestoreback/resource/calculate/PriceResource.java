@@ -18,7 +18,7 @@ public class PriceResource {
     private PriceService priceService;
 
 
-    @GetMapping("get")
+    @GetMapping("v1/get")
     private List<Price> getAll(@RequestParam("id") String id) {
         return priceService.getAll(Long.parseLong(id)).stream().sorted((a,b) -> b.getDate().compareTo(a.getDate())).collect(Collectors.toList());
     }

@@ -21,7 +21,7 @@ public class CharacteristicResource {
     @Autowired
     private final ProductService productService;
 
-    @GetMapping("get")
+    @GetMapping("v1/get")
     private List<CharacteristicDto> getByProductId(@RequestParam("id") String id) {
         return characteristicService.getAllDto(Long.parseLong(id));
     }

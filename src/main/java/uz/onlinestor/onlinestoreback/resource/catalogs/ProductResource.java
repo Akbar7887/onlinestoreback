@@ -18,12 +18,12 @@ public class ProductResource {
     @Autowired
     private final ProductService productService;
 
-    @GetMapping("get")
+    @GetMapping("v1/get")
     private List<ProductDto> getAll(@RequestParam("id") String catalog_id) {
         return productService.getAllProductDto(Long.parseLong(catalog_id));
     }
 
-    @GetMapping("getbyid")
+    @GetMapping("v1/getbyid")
     private Product getById(@RequestParam("id") String id) {
         return productService.getById(Long.parseLong(id));
     }

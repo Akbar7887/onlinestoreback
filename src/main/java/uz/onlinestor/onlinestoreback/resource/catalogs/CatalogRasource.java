@@ -31,12 +31,12 @@ public class CatalogRasource {
     private final FileService fileService;
 
 
-    @GetMapping("get")
+    @GetMapping("v1/get")
     private List<CatalogDto> getAll() {
         return catalogService.getAllCatalogDto();
     }
 
-    @GetMapping("getall")
+    @GetMapping("v1/getall")
     private List<Catalog> getAllActiveAllOfThem() {
         return catalogService.getAllActiveAllOfThem();
     }
@@ -80,7 +80,7 @@ public class CatalogRasource {
     }
 
 
-    @GetMapping("download/{id:.+}")
+    @GetMapping("v1/download/{id:.+}")
     private ResponseEntity<?> downloadFile(@PathVariable("id") String id, HttpServletRequest request) throws IOException {
 
        Catalog catalog = catalogService.getById(Long.parseLong(id));

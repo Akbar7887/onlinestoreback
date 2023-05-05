@@ -16,7 +16,7 @@ public class UserResource {
     @Autowired
     final UserServiceIml userService;
 
-    @GetMapping("get")
+    @GetMapping("v1/get")
     private List<UserApp> getAll() {
         return userService.findAll();
     }
