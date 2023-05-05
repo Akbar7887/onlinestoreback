@@ -40,15 +40,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(
                 "/api/token/refresh/**",
                 "/login", "/login/**",
-                "/online/doc/catalog/**",
-                "/online/doc/product/**",
-                "/online/doc/characteristic/**",
-                "/online/doc/productImage/**",
-                "/online/doc/exchangeRates/**",
-                "/online/doc/rates/**",
-                "/online/doc/comment/**",
-                "/online/organization/**",
-                "/online/doc/user/**"
+                "/online/doc/catalog/v1/**",
+                "/online/doc/product/v1/**",
+                "/online/doc/characteristic/v1/**",
+                "/online/doc/productImage/v1/**",
+                "/online/doc/exchangeRates/v1/**",
+                "/online/doc/rates/v1/**",
+                "/online/doc/comment/v1/**",
+                "/online/organization/v1/**",
+                "/online/doc/user/v1/**"
 
 
         ).permitAll();

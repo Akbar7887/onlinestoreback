@@ -16,7 +16,7 @@ public class OrderUserResource  {
     @Autowired
     final OrderUserService orderUserService;
 
-    @GetMapping("getbyuser")
+    @GetMapping("v1/getbyuser")
     private List<OrderUser> getAll(@RequestParam("id") String id) {
         return orderUserService.getAllbyUserId(Long.parseLong(id));
     }
